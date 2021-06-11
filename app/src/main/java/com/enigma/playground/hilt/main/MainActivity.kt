@@ -3,12 +3,12 @@ package com.enigma.playground.hilt.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.enigma.playground.hilt.App
 import com.enigma.playground.hilt.R
 import com.enigma.playground.hilt.analytics.AnalyticsService
 import com.enigma.playground.hilt.analytics.FacebookAnalytics
 import com.enigma.playground.hilt.analytics.MixPanelAnalytics
 import com.enigma.playground.hilt.data.ApiService
-import com.enigma.playground.hilt.data.LocalDb
 import com.enigma.playground.hilt.data.Repository
 import com.enigma.playground.hilt.data.SharedPrefs
 
@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val apiService = ApiService.getInstance()
-        val localDb = LocalDb(this.applicationContext)
+
+        val localDb = (applicationContext as? App)?.getLocalDb() ?: App.createLocalDb(this)
         val sharedPrefs = SharedPrefs(this.applicationContext)
         val mixPanelAnalytics = MixPanelAnalytics()
         val facebookAnalytics = FacebookAnalytics()
