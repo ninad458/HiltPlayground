@@ -9,5 +9,6 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val repository: Repository,
-    private val analyticsService: AnalyticsService
+    private val analyticsService: AnalyticsService,
+    private val mainComputation : MainComputation
 ) : ViewModel()
