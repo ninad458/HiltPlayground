@@ -1,5 +1,6 @@
 package com.enigma.playground.hilt.data
 
 import android.content.Context
+import javax.inject.Inject
 
-class SharedPrefs(private val context: Context)
+class SharedPrefs constructor(private val context: Context)
